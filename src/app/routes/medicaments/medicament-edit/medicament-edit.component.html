@@ -1,0 +1,35 @@
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <mat-form-field class="full-width">
+      <input matInput type="text" id="name" name="name" placeholder="name" ngModel />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput type="text" id="posologie" name="posologie" placeholder="Posologie" ngModel />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <textarea
+        matInput
+        type="text"
+        id="description"
+        name="description"
+        placeholder="description"
+        ngModel
+      ></textarea>
+    </mat-form-field>
+    <div>
+      <button type="submit" mat-raised-button color="primary">
+        {{ editMode ? "Update" : "Add" }}
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        type="button"
+        *ngIf="editMode"
+        (click)="onDelete()"
+      >
+        Delete
+      </button>
+      <button mat-raised-button type="button" (click)="onClear()">Clear</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,12 @@
+<br><br>
+<div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
+  <app-medicament-edit></app-medicament-edit>
+  <mat-card
+    fxFlex="100%"
+    (click)="onEditMedicament(i)"
+    style="cursor: pointer; width: 50%;"
+    *ngFor="let medoc of medicaments; index as i"
+  >
+    {{ medoc.name }}
+  </mat-card>
+</div>

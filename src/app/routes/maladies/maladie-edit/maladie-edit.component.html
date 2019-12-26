@@ -1,0 +1,81 @@
+<div fxLayout="column"  fxFlex="75%"  fxLayoutGap="20px">
+  <form fxLayout="column" fxFlex="100%" [formGroup]="maladieForm" (ngSubmit)="onSubmit()" >
+    <div>
+      <button type="submit" mat-raised-button color="primary" [disabled]="!maladieForm.valid">{{ editMode ? "Update" : "Create" }}</button>
+      <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+    </div>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        id="name"
+        name="name"
+        placeholder="name"
+        formControlName = "name"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        type="text"
+        name="description"
+        placeholder="description"
+        formControlName="description"
+      ></textarea>
+    </mat-form-field>
+    <div fxLayout ="column" fxLayoutGap="20px">
+      <div formArrayName="symptomes">
+        <mat-label>Symptômes</mat-label>
+        <div fxLayout="row" fxLayoutGap="10px" *ngFor="let sympCtrl of symptomesControls; index as i" [formGroupName]="i">
+          <mat-form-field fxFlex="50%">
+            <input
+              matInput
+              type="text"
+              name="name"
+              placeholder="name"
+              formControlName = "name"
+            />
+          </mat-form-field>
+          <mat-form-field fxFlex="50%">
+            <input
+              matInput
+              type="text"
+              name="description"
+              placeholder="description"
+              formControlName = "description"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <button type="button" mat-raised-button color="primary" (click)="onAddNewSymptome()">Ajouter nouveau symptome</button>
+        </div>
+      </div>
+      <div formArrayName="medicaments">
+        <mat-label>Medicaments</mat-label>
+        <div fxLayout="row" fxLayoutGap="10px" *ngFor="let medocCtrl of medicamentsControls; index as i" [formGroupName]="i">
+          <mat-form-field fxFlex="50%">
+            <input
+              matInput
+              type="text"
+              name="name"
+              placeholder="name"
+              formControlName = "name"
+            />
+          </mat-form-field>
+          <mat-form-field fxFlex="50%">
+            <input
+              matInput
+              type="text"
+              name="posologie"
+              placeholder="posologie"
+              formControlName = "posologie"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <button type="button" mat-raised-button color="primary" (click)="onAddNewMedicament()">Ajouter nouveau medicament</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

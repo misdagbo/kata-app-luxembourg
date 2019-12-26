@@ -1,0 +1,96 @@
+<!-- <div fxLayoutAlign="center center">
+  <mat-spinner></mat-spinner>
+</div fxLayout="row"> -->
+<div
+  *ngIf="resultatsDiagnostic"
+  fxLayout="column"
+  fxLayoutGap="20px"
+  fxLayoutAlign="space-around center"
+>
+  <h2>Infos sur les symptômes du patient</h2>
+  <mat-card
+    *ngFor="let symp of symptomesChecked"
+    fxLayout="row"
+    fxFlex="100%"
+    fxLayoutGap="30px"
+  >
+    <mat-form-field>
+      <input matInput placeholder="Libelle" disabled value="{{ symp.name }}" />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Description"
+        disabled
+        value="{{ symp.description }}"
+      />
+    </mat-form-field>
+  </mat-card>
+  <h2>Resultats après diagnostic (par ordre de pertinence)</h2>
+  <mat-card
+    *ngFor="let result of resultatsDiagnostic"
+    fxLayout="row"
+    fxFlex="100%"
+    fxLayoutGap="30px"
+  >
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-around center">
+      <div fxLayout="column" fxLayoutGap="20px">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Pertinence"
+            disabled
+            value=" {{ result.pertinence }}"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Maladie"
+            disabled
+            value=" {{ result.maladie.name }}"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Description maladie"
+            disabled
+            value=" {{ result.maladie.description }}"
+          />
+        </mat-form-field>
+      </div>
+
+      <div
+        fxLayout="column"
+        fxLayoutGap="20px"
+        *ngFor="let medoc of result.maladie.medicaments; index as i"
+      >
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Medicament {{ i + 1 }}"
+            disabled
+            value=" {{ medoc.name }}"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Posologie  {{ i + 1 }}"
+            disabled
+            value=" {{ medoc.posologie }}"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Description  {{ i + 1 }}"
+            disabled
+            value=" {{ medoc.description }}"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card>
+</div>

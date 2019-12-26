@@ -1,0 +1,29 @@
+<div fxLayout="column" fxFlex="75%" fxLayoutGap="20px" fxLayoutAlign="center">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <mat-card> {{ maladie.name }} </mat-card>
+    <mat-card>{{ maladie.description }}</mat-card>
+  </div>
+  <mat-form-field>
+    <mat-label>Manager Maladie</mat-label>
+    <mat-select>
+      <mat-option (click)="onEditMaladie()"> Editer </mat-option>
+      <mat-option (click)="onDeleteMaladie()"> Supprimer </mat-option>
+      <mat-option (click)="onAddToSymptomesList()">
+        Ajouter à la liste des symptomes
+      </mat-option>
+      <mat-option (click)="onAddToMedicamentsList()">
+        Ajouter à la liste des medicaments
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div fxLayout="column" fxLayoutGap="10px">
+    <mat-label>Symptômes</mat-label>
+    <mat-card *ngFor="let symp of maladie.symptomes">{{ symp.name }}</mat-card>
+  </div>
+  <div fxLayout="column" fxLayoutGap="10px">
+    <mat-label>Medicaments</mat-label>
+    <mat-card *ngFor="let medoc of maladie.medicaments">{{
+      medoc.name
+    }}</mat-card>
+  </div>
+</div>

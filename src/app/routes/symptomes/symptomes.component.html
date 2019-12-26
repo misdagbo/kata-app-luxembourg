@@ -1,0 +1,13 @@
+<br><br>
+<div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
+  <app-symptome-edit></app-symptome-edit>
+
+  <mat-card
+    fxFlex="100%"
+    (click)="onEditSymptome(i)"
+    style="cursor: pointer; width: 50%;"
+    *ngFor="let symp of symptomes; index as i"
+  >
+    {{ symp.name }}
+  </mat-card>
+</div>
