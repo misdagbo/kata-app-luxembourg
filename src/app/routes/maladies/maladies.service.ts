@@ -15,11 +15,19 @@ export class MaladiesService {
   private maladies: Maladie[] = [
     new Maladie(
       "Migraine",
-      [new Symptome("Symp 1"), new Symptome("Symp 2")],
+      [new Symptome("Céphalé"), new Symptome("Sensibilité lumière"), new Symptome("Sensibilité bruit")],
+      [
+        new Medicament("Doliprane", "2 matin 2 soir pendant 10 jours"),
+        new Medicament("Medoc 2", "Posologie 2")
+      ], "Maux de tête prolongés ou périodiques"
+    ),
+    new Maladie(
+      "Maux de ventre",
+      [new Symptome("Vomissements"), new Symptome("Nausées")],
       [
         new Medicament("Medoc 1", "Posologie 1"),
         new Medicament("Medoc 2", "Posologie 2")
-      ]
+      ], "le ventre fait mal"
     ),
     new Maladie(
       "Appendicite",
@@ -27,7 +35,7 @@ export class MaladiesService {
       [
         new Medicament("Medoc 3", "Posologie 3"),
         new Medicament("Medoc 4", "Posologie 4")
-      ]
+      ], "douleurs atroces au niveau du ventre"
     )
   ];
 

@@ -11,9 +11,13 @@ export class SymptomesService {
 
 
   private symptomes: Symptome[] = [
-    new Symptome('Céphalé'),
-    new Symptome('Douleur yeux'),
-    new Symptome('Pulsation')
+    new Symptome('Céphalé', 'mal de tête'),
+    new Symptome('Douleur yeux', 'maux au niveaux des yeux'),
+    new Symptome('Pulsation', 'avoir des ressentiments'),
+    new Symptome('Nausées', 'envie de vomir'),
+    new Symptome('Vomissements', "rendre ce qu'on a dans le ventre"),
+    new Symptome('Sensibilité lumière', 'vision difficile quand densité lumière  forte'),
+    new Symptome('Sensibilité bruit', 'nuisance sonore inacceptable')
   ];
 
   constructor() { }
