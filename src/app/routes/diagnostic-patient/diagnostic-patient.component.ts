@@ -23,12 +23,15 @@ export class DiagnosticPatientComponent implements OnInit {
     this.diagnosticService.isDiagnostic.next(false);
     this.symptomesList = this.symptomeService.getSymptomes();
     this.symptomes.valueChanges.subscribe(
-      data => (this.symptomesChecked = data)
+      data =>  (this.symptomesChecked = data)
     );
   }
 
   onDiagnostic() {
-    this.diagnosticService.symptomesChecked.next(this.symptomesChecked);
-    this.diagnosticService.diagnostic(this.symptomesChecked);
+    if(this.symptomesChecked) {
+      this.diagnosticService.symptomesChecked.next(this.symptomesChecked);
+      this.diagnosticService.diagnostic(this.symptomesChecked);
+    }
+
   }
 }

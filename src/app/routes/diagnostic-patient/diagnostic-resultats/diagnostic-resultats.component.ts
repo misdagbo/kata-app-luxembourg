@@ -25,7 +25,6 @@ export class DiagnosticResultatsComponent implements OnInit, OnDestroy {
     this.subResultatDiagnostic = this.diagnosticService.resultatsDiagnostic.subscribe(
       (data: ResultatItem[]) => {
         this.resultatsDiagnostic = data;
-        console.log("huuuuuuuuuuuuuuuuuu : ", data);
       }
     );
   }

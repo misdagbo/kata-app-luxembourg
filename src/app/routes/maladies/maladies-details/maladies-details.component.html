@@ -1,9 +1,15 @@
 <div fxLayout="column" fxFlex="75%" fxLayoutGap="20px" fxLayoutAlign="center">
   <div fxLayout="column" fxLayoutGap="20px">
-    <mat-card>
-      {{ maladie.name }}
-    </mat-card>
-    <mat-card>{{ maladie.description }}</mat-card>
+    <div fxLayout="column" fxLayoutGap="10px">
+      <mat-label>Nom maladie</mat-label>
+      <mat-card>
+        {{ maladie.name }}
+      </mat-card>
+    </div>
+    <div fxLayout="column" fxLayoutGap="10px">
+      <mat-label>Description</mat-label>
+      <mat-card> {{ maladie.description }}</mat-card>
+    </div>
   </div>
   <mat-form-field appearance="outline">
     <mat-label>Manager Maladie</mat-label>

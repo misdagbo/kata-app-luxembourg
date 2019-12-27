@@ -2,15 +2,50 @@
   <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div fxLayout="row" fxLayoutGap="30px">
       <mat-form-field>
-        <input matInput type="text" id="name" name="name" placeholder="name" ngModel/>
+        <input
+          matInput
+          type="text"
+          id="name"
+          name="name"
+          placeholder="name"
+          #name="ngModel"
+          required
+          ngModel
+        />
+        <mat-error *ngIf="!name.valid && name.touched"
+          >Entrer le nom du symptôme svp !</mat-error
+        >
       </mat-form-field>
       <mat-form-field>
-        <input flexFlex="100%" matInput type="text"  id="description" name="description" placeholder="description" ngModel />
+        <input
+          flexFlex="100%"
+          matInput
+          type="text"
+          id="description"
+          name="description"
+          placeholder="description"
+          ngModel
+        />
       </mat-form-field>
-    </div>
-    <div>
-      <button type="submit" mat-raised-button color="primary">{{editMode ? 'Update' : 'Add'}} </button>
-      <button mat-raised-button color="warn" type="button" *ngIf="editMode" (click)="onDelete()">Delete</button>
+    </div><br>
+    <div fxLayout="row" fxLayoutGap="5px">
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="!f.valid"
+      >
+        {{ editMode ? "Update" : "Add" }}
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        type="button"
+        *ngIf="editMode"
+        (click)="onDelete()"
+      >
+        Delete
+      </button>
       <button mat-raised-button type="button" (click)="onClear()">Clear</button>
     </div>
   </form>
