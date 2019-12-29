@@ -18,9 +18,8 @@ export class DiagnosticService {
     let results: ResultatItem[] = [];
     let allMaladies = this.maladieService.getMaladies();
     for (let maladie of allMaladies) {
-      let pertinence: number;
-      pertinence = this.checkPertinence(symptomesChecked, maladie.symptomes);
-      if (pertinence !== 0) {
+      let pertinence: number = this.checkPertinence(symptomesChecked, maladie.symptomes);
+      if (!!pertinence) {
         results.push({ maladie, pertinence });
       }
     }
@@ -29,13 +28,9 @@ export class DiagnosticService {
   }
 
   checkPertinence = function(source: Symptome[], cible: Symptome[]): number {
-    if (cible.length === 0 || source.length === 0) {
-      return 0;
-    } else {
-      let check: String[] = source
-        .map(x => x.name)
-        .filter(item => cible.map(x => x.name).includes(item));
-      return check.length;
-    }
+    let check: Symptome[] = cible.filter(
+      item => !!source.find(ooo => ooo.name === item.name)
+    );
+    return !!check ? check.length : 0;
   };
 }
