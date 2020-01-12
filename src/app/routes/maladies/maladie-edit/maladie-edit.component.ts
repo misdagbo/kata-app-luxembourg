@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormArray, FormControl, Validators } from "@angular/forms";
+import { FormGroup, FormArray, FormControl, Validators, FormBuilder } from "@angular/forms";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { Maladie } from "src/app/shared/models/maladie.model";
 import { MaladiesService } from "../maladies.service";
@@ -15,6 +15,7 @@ export class MaladieEditComponent implements OnInit {
   editMode = false;
   maladie: Maladie;
   constructor(
+    private fb : FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private maladieService: MaladiesService
@@ -102,12 +103,15 @@ export class MaladieEditComponent implements OnInit {
         })
       );
     }
-    this.maladieForm = new FormGroup({
-      name: new FormControl(maladieName, Validators.required),
-      symptomes: symptomes,
-      medicaments: medicaments,
-      description: new FormControl(maladieDescription)
-    });
+
+    // Exemple d'utilisation d'un formBuilder
+
+    this.maladieForm = this.fb.group({
+      name : [maladieName, Validators.required],
+      symptomes : symptomes,
+      medicaments : medicaments,
+      description : [maladieDescription]
+    })
   }
 
   // *** fin Fonction d'initialisation du formulaire
